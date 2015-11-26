@@ -1,0 +1,19 @@
+This tiny program will run a command and will restart it every time the
+child process terminates. May be useful to run programs you believe must
+never die. Beware many daemons fork themselves at very beginning, let the
+original process die, and keep the execution on the fork. If rerunner is
+used on such daemons, it will detect the early death of the original
+process and will keep on spawning it forever, possibly using up all
+system memory until the computer freezes when swapping to death.
+
+To build:
+
+$ make
+
+To run:
+
+$ ./rerunner command [args]
+
+Once running, the only way I know to kill your command, is to kill
+the rerunner process first. If on a terminal, simply pressing CTRL+C
+will do.
